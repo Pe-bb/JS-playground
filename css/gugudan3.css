@@ -1,0 +1,179 @@
+
+.html,body{
+    margin: auto;
+    padding: auto;
+    background-color: #DFDFDE;
+}
+
+
+.whole{
+    max-width: 100%;
+    margin: auto auto auto auto;
+    width: 100%;
+    height:100%;
+
+}
+
+.header{
+    background-image:url(https://img.freepik.com/free-vector/background-seamless-pattern-vector-with-cute-pastel-confetti_53876-116802.jpg);
+    width: 100%;
+    height: 200px;
+    margin:auto;
+    position: fixed;
+
+    line-height: 50px;
+	top: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    clear:both;
+    color: white;
+    font-size: 2rem;
+    text-shadow: -1px 0px #ff0080, 0px 2px #8D8DAA, 2px 0px #4300fc, 0px -2px #690000;}
+
+
+.h1 {
+    background-image: linear-gradient(transparent calc(100% - 30px), rgb(229, 255, 0) 10px);
+    background-repeat: no-repeat;
+    background-size: 0% 100%;
+    transition: background-size 0.8s;
+    cursor: pointer;
+}
+
+.h1:hover{
+    background-size: 100% 100%;
+}
+.h3{font-size: 1.5rem;
+    margin-top: -30px;
+    
+}
+
+.wrap{
+    clear:both;
+    max-width:95%;
+    height:100%;
+
+    padding-top: 200px;
+    padding-bottom: 100px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    margin: auto;
+    background-color: white;
+
+
+}
+.minititle{
+    font-size: 1.6rem;
+}
+
+.form-control{
+    background-color: #DFDFDE;
+    color: #888;
+    border: 1px solid #e8e8e8;
+
+    font-size: 1.3em;
+    letter-spacing: middle;
+    cursor: text;
+    display: inline-block;
+    width: 300px;
+    max-width:90%;
+    outline:none;
+    border-radius: 5px 5px 5px 5px;
+}
+
+.form-control:hover{
+    background: #f8f8f8;
+    border: none;
+    outline:none;
+    transition: all 0.5s;
+}
+
+.mybtn{
+    width: 300px;
+    max-width:90%;
+    margin-top:0.4rem;
+
+    background-color: #f8f8f8;
+    color: #8D8DAA;
+    border: 1px solid #e8e8e8;
+    font-size: 1.125em;
+    letter-spacing: 0px;
+    padding: 10px 60px;
+    cursor: pointer;
+    display: inline-block;
+    transition: all 0.5s;
+    border-radius: 20px 20px 20px 20px;
+
+}
+
+.mybtn:hover{
+    background:  #8D8DAA;
+    border-radius:  10px 10px 10px 10px;
+    color: white;
+    border: none;
+    outline:none;
+    transition: all 0.5s;
+}
+
+
+.card{
+    display: none;
+
+    width: 300px;
+    max-width: 90%;
+    background-color: light;
+    text-align: center;
+    transition: all 0.5s;
+    background-color:#f8f8f8;
+    margin-bottom: 20px;
+    padding-bottom: 20px;
+    border-radius:  10px 10px 10px 10px;
+
+
+}
+.card:hover{
+    width: 500px;
+    max-width: 90%;
+    background-color: light;
+    text-align: center;
+    letter-spacing: 1rem;
+    transition: all 0.5s;
+
+
+}
+.card-header{
+    color: #f8f8f8;
+    background: #F56D91;
+    border-radius: 5px 5px 5px 5px;
+    font-size: 1.6rem;
+    padding:auto;
+    margin: 0 0 0 0;
+
+}
+
+.card-text{
+    width: 300px;
+    max-width: 100%;
+    font-size: 1.7rem;
+    text-decoration: none;
+    color: #000000;
+    margin: auto;
+
+
+}
+*{
+    font-family: 'Poor Story', cursive;
+}
+
+.footer {
+    width: 100%;
+    height: 50px;
+    line-height: 50px;
+	bottom: 0;
+    background-color: #DFDFDE;
+    display: block;
+    position: fixed;
+    text-indent: 3%;
