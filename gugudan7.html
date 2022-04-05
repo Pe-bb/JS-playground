@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>구구단 출력하기</title>
+</head>
+<body>
+    <h1>구구단 출력하기 final</h1>
+    <script>    
+    gugudan={};
+    gugudan.userNumber=[];
+    gugudan.result=[];
+
+    gugudan.split=function(string){
+        var a=[];
+        a=string.split(',');
+        for(n=0;n<=1; n++){
+            i=Number(a[n]);
+            this.userNumber.push(i);
+        };
+    };//사용자가 입력한 수를 ,를 기준으로 구분해 수로 바꿔 배열에 넣는 함수를 선언
+
+    gugudan.caculate=function(a,b){
+        this.result=[];
+        for(i=0; i < 9; i++){
+            this.result.push(n*(i+1));
+            if(n===a && (i+1)===b){
+                return true;
+            };   
+        };
+    };//구구단을 사용자가 입력한 두 수만큼까지 계산해주는 함수를 선언
+
+    gugudan.print=function(){
+        document.write("<h2>"+n+"단</h2><br>")
+        for(i=0; i<9; i++){
+            if(this.result[i]===undefined){
+            break;
+            }
+            document.write(n+"X"+(i+1)+"="+this.result[i]+"<br>");
+            };
+        };//구구단을 출력해주는 함수를 선언
+
+    main=function(){
+        console.log("running main function..")
+        var string=prompt("원하는 단과 곱을 입력하세요","예: 5,6");
+        gugudan.split(string);
+        var a=gugudan.userNumber[0];
+        var b=gugudan.userNumber[1];
+        for(n = 2; n <= 9; n++){
+            var end=gugudan.caculate(a,b);
+            gugudan.print();
+            if (end===true){
+                break;
+            };  
+        };
+    };
+
+    main();
+    </script>
+
+</body>
+</html>
