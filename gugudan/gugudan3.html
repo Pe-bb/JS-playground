@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="stylesheet" href="./css/gugudan3.css">
+
+    
+    <title>구구단을 외자!</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poor+Story&display=swap" rel="stylesheet">
+</head>
+
+
+<body>
+<div class="whole">
+     <div class="header">
+         <h1 class="h1">구구단을 외자!</h1>
+        <h3 class="h3">이제 당신도 암기왕!</h3>
+        </div>   
+    <div class="wrap">
+        
+        <div class="minititle">
+            <p>🔥쉽고 재미있는 구구단 외우기🔥</p>
+        </div>
+        <textarea class="form-control" placeholder="1~9사이의 수" type="text" id="number"></textarea>
+        <button type="button" class="mybtn" onclick="runGugudan();reset()">확인하기</button>
+        
+        <script>
+
+
+            function runGugudan() {
+
+                var str = document.getElementById("number").value
+                var i = Number(str);
+                if (isNaN(i) === true) {
+                    alert("숫자를 입력해 주세요!")
+                }
+                else if (9 < i || i < 1) {
+                    alert("1에서 9까지의 수를 입력해 주세요!")
+                }
+                else {
+                    var addResult = ""
+                    txt1 = "<br />" + i + "단을 알아봅시다." + "<br /><br />";
+
+                    for (j = 1; j < 10; j++) {
+                        var result = i * j;
+                        addResult += i + "*" + j + "=" + result + "<br />";
+                        console.log(addResult)
+                    };
+
+                    document.getElementById("card").style.display = "block";
+                    document.getElementById("card-header").innerHTML = txt1;
+                    document.getElementById("card-text").innerHTML = addResult;
+                    
+                }
+            }
+
+            function reset() {
+                document.getElementById("number").value = "";
+            }
+
+            
+
+        </script>
+        <br>
+        <div class="card" id="card">
+            <p class="card-header" id="card-header"></p>
+            <p class="card-text" id="card-text"></p>
+        </div>
+
+</div>
+
+</div> 
+
+</body>
+<div class="footer">
+    copyright 2022 | Theme by dks055@naver.com | All Right Reserved
+</div>
+</html>
