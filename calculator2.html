@@ -10,18 +10,14 @@
     <h1>두 수의 사칙연산</h1>
     <div>
         <input type="text" id="input" value="두 수를 입력하세요. 예: 5,6" onclick="value=null;">
-        <button onclick="main(); calc.reset();">확인</button>
+        <button onclick="main();">확인</button>
     </div>
     <div id="output"></div>
     <script>
         calc={};
         calc.input=[];//사용자가 입력한 두 수
         calc.result=[];//사칙연산의 결과
-        calc.sign=["+","-","*","/"];
-
-        calc.reset=function(){
-            document.getElementById("input").value="";
-        };//초기화
+        calc.sign=["+","-","*","/"];//사칙연산 기호
 
         calc.split=function(i){
             this.input=[];
