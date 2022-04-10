@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>문자열 계산기</title>
+</head>
+<body>
+    <h1>두 수의 사칙연산</h1>
+    <div>
+        <input type="text" id="input" value="두 수를 입력하세요. 예: 5,6" onclick="value=null;">
+        <button onclick="main(); calc.reset();">확인</button>
+    </div>
+    <div id="output"></div>
+    <script>
+        calc={};
+        calc.input=[];//사용자가 입력한 두 수
+        calc.result=[];//사칙연산의 결과
+        calc.sign=["+","-","*","/"];
+
+        calc.reset=function(){
+            document.getElementById("input").value="";
+        };//초기화
+
+        calc.split=function(i){
+            this.input=[];
+            var a=i.split(',');
+            for(j=0; j<=1; j++){
+                this.input.push(Number(a[j]));
+            };
+            console.log(this.input);
+        }//사용자가 입력한 두 수의 문자열을 숫자로 바꿔 배열에 넣는 함수
+        
+        calc.arith=function(a,b){
+            this.result=[];
+            this.result.push(a+b,a-b,a*b,a/b);
+        }//두 수의 사칙연산을 하는 함수
+       
+        calc.print=function(){
+            document.getElementById("output").innerHTML=""; 
+            for(i=0; i < this.result.length; i++){
+                var x= this.sign[i];
+                var y= this.result[i];
+                var z= this.input[0]+x+this.input[1]+"="+y+"<br>"
+                document.getElementById("output").innerHTML+=z;
+            };    
+        }//결과를 화면에 출력하는 함수
+
+        main=function(){
+            console.log("running main function...");
+            var num=document.getElementById("input").value;
+            calc.split(num);
+            var a=calc.input[0];
+            var b=calc.input[1];
+            calc.arith(a,b);
+            calc.print();
+        }
+    </script>
+    
+</body>
+</html>
