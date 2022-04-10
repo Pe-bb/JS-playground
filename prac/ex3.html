@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>10000까지의 소수 알아보기</title>
+</head>
+
+<body>
+    <h1>1000까지의 소수 알아보기</h1>
+    <div id="result"></div>
+<script>
+    var numbers = {};
+    numbers.all=[];
+    numbers.prime = [];
+
+    
+
+    numbers.addAll = function (max_num) {
+        for (number = 2; number <= max_num; number++) {
+             this.all.push (number);
+        };
+    };//2부터 max_num까지 (소수인지 아닌지 판별하기 위해) 모두 numbers.all배열에 담는 함수
+
+    numbers.addAll(1000); //max_num의 변수를 할당하여 배열을 만듬
+
+    numbers.isPrime = function(num){
+        for (i = 2; i < num; i++) {
+            if (num % i === 0) {  
+                return false;
+            }; 
+           
+        };
+        return true;      
+    };//변수 num이 소수인지 아닌지 판별하고 소수이면 true, 소수가 아니면 false를 return해주는 함수를 선언
+    
+    numbers.addPrime = function(y){
+        if (y===true) {
+        this.prime.push(elmt);
+            }; 
+        };//변수y가 true면 number.prime배열 안의 value로 넣어주는 함수를 선언
+
+    for( j = 0; j < numbers.all.length; j++ )
+        { var elmt = numbers.all[j];
+        var k=numbers.isPrime(elmt)//numbers.all배열의 원소들을 변수elmt에 담아 isPrime함수를 호출하고 리턴값을 변수 k에 담음
+        numbers.addPrime(k);//isPrime의 리턴값으로 addPrime함수 호출
+    };
+
+    numbers.getAllPrimeNumbers = function(){
+        var result="";
+        for(z=0; z<numbers.prime.length; z++){
+        result += this.prime[z]+"은(는) "+(z+1) +"번째 소수입니다.<br>"
+        };
+        return result; 
+    };
+    document.getElementById('result').innerHTML = numbers.getAllPrimeNumbers();
+   
+</script>
+
+    
+</body>
+</html>

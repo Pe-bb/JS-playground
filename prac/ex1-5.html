@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h2>연습문제</h2>
+    <script>
+        var txt = prompt("영어 문장을 입력하세요");
+        var txt2 = txt.toUpperCase();
+        var txt3 = txt.toLowerCase();
+
+        if (txt===txt2){
+            document.write(txt + "은(는) 대문자 문장입니다.")
+        } else if ( txt ===txt3 ) {
+            document.write(txt + "은(는) 소문자 문장입니다.")
+        } else {document.write(txt + "은(는) 보통 문장입니다.")}      
+    </script>
+</body>
+</html>
