@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>문자열 계산기</title>
+</head>
+<body>
+    <h1>두 수의 사칙연산</h1>
+    <div>
+        <input type="text" id="input1" value="첫번째 숫자" onclick="value=null;">
+        <input type="text" id="input2" value="두번째 숫자" onclick="value=null;">
+        <input type="text" id="input3" value="연산기호 +,-,*,/" onclick="value=null;">
+        <button onclick="main();">결과 확인</button>
+    </div>
+    <br>
+    <div id="output"></div>
+    <script>
+        calc={};
+        calc.input=[];//사용자가 입력한 두 수
+        calc.result=[];//사칙연산의 결과
+        calc.sign=["+","-","*","/"];//사칙연산 기호
+
+        
+        calc.arith=function(a,b){
+            this.result=[];
+            var sign=document.getElementById("input3").value;
+            if(sign==="+"){
+                this.result.push("더하기 :"+(a+b));
+            }
+            else if(sign==="-"){
+                this.result.push("빼기 :"+(a-b));
+            }
+            else if(sign==="*"){
+                this.result.push("곱하기: "+(a*b));
+            }
+            else if(sign==="/"){
+                this.result.push("나누기: "+(a/b));
+            }
+            else {
+                this.result.push( "사칙 연산자만 입력해 주세요.")
+            }
+        }//기호를 판별해 두 수의 사칙연산을 하는 함수
+       
+        calc.print=function(){
+            document.getElementById("output").innerHTML="";
+
+            var output= document.getElementById("output");
+            output.innerHTML=this.result;
+        }//결과를 화면에 출력하는 함수
+
+        main=function(){
+            console.log("running main function...");
+            var num1=Number(document.getElementById("input1").value);
+            var num2=Number(document.getElementById("input2").value);
+            var sign=document.getElementById("input3").value;
+            calc.arith(num1,num2);
+            calc.print();
+        }
+    </script>
+    
+</body>
+</html>
