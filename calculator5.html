@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>사칙연산 계산기</h1>
+    <div id="output"></div>
+    <script>
+        input={};
+        input.num1="";
+        input.op="";
+        input.num2="";
+
+        input.getFirstValue=function(){
+            this.num1=Number(prompt("1번째 수를 입력해 주세요"));
+            calculator.fomula.push(String(this.num1));
+            return this.num1
+        };
+
+        input.getOperator=function(){
+            this.op=prompt("사칙연산 기호를 입력해 주세요/q입력시 종료 및 결과 출력");
+            return this.op;
+        };
+
+        input.getSecondValue=function(n){
+            this.num2=Number(prompt(n+"번째 수를 입력해 주세요"));
+            return this.num2;
+        };
+
+        calculator={};        
+        calculator.fomula=[];
+        calculator.fomulaString=[];
+        calculator.cal=function(op,num2){ 
+            if(op==="+"){
+                input.num1+=num2
+                this.fomula.push("+"+num2)
+                this.fomulaString=this.fomula.join("")
+            };
+            if(op==="-"){
+                input.num1-=num2
+                this.fomula.push("-"+num2)
+                this.fomulaString=this.fomula.join("")
+            };
+            if(op==="*"){
+                input.num1*=num2
+                this.fomula.push("x"+num2)
+                this.fomulaString=this.fomula.join("")
+                };
+            if(op==="/"){
+                input.num1/=num2
+                this.fomula.push("/"+num2)
+                this.fomulaString=this.fomula.join("")
+            };
+        };
+               
+
+        output = {};
+        output.calc=[];
+        output.print=function(){
+            this.calc.push(calculator.fomulaString+"="+input.num1)
+            var out = document.getElementById("output")
+            out.innerHTML="계산결과 "+this.calc;
+        }
+  
+        main=function(){
+            console.log ("running main function...");
+            input.getFirstValue();
+            var n=2;
+            while(true){
+                input.getOperator();
+                if(input.op==="q"){
+                    break;
+                };    
+                input.getSecondValue(n);
+                calculator.cal(input.op,input.num2);
+                n++;
+            };
+            output.print();
+        };
+
+        main();
+    </script>
+    
+</body>
+</html>
