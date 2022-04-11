@@ -72,15 +72,18 @@
             };
         };//사칙연산을 하는 함수, 계산 결과를 input 배열의 맨앞에 넣음
 
+        num.print=function(){
+            var out = document.getElementById("output")
+            out.innerHTML= this.result+"="+this.inputNum;
+        }
+
         
         main=function(){
             console.log ("running main function...");
             num.input();
             num.formula();
             num.calc();
-
-            var out = document.getElementById("output")
-            out.innerHTML= num.result+"="+num.inputNum;
+            num.print();
         };
 
         main();
