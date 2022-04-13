@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>사칙연산 계산기</title>
+</head>
+<body>
+    <h1>사칙연산 계산기</h1>
+    <div class="input">
+        <li>정수와 연산기호를 입력하고 확인을 누르세요</li>
+        <li>정수와 연산기호 사이는 띄워 쓰세요</li>
+        <br>
+        <input type="text" id="input" onclick="value=null;">
+        <button onclick="main();">확인</button>
+    </div>
+        <br>
+    <div class="output" id="output"></div>
+    
+
+    <script>
+        input={};
+        input.num1=[];//사용자의 첫번째 수
+        input.num2=[];//사칙연산을 할 수
+        input.op=[];//사용자가 입력한 연산기호
+
+        input.split=function(i){
+            fomula=i.split(" ");
+            return fomula;
+        };
+        //사용자가 입력한 문자열을 쪼개 배열에 넣는 함수
+
+        input.getFirstValue=function(n){
+            this.num1=(Number(n[0]));
+            return this.num1;
+        };
+
+        input.getOperator=function(n){
+            this.op=n[1];
+            return this.op;
+        };
+
+        input.getSecondValue=function(n){
+            this.num2=(Number(n[2]));
+            return this.num2;
+        };
+
+        calc={};
+        calc.calc=function(op,num2){
+            if(op==="+"){
+                input.num1+=num2
+            }
+            else if(op==="-"){
+                input.num1-=num2
+            }
+            else if(op==="*"){
+                input.num1*=num2
+            }
+            else if(op==="/"){
+                input.num1/=num2
+            }
+            else {alert("사칙연산자만 입력해 주세요")
+            };
+        }//기호를 판별해 두 수의 사칙연산을 하는 함수
+
+        output={};
+        output.print=function(i){
+            var out= document.getElementById("output")
+            out.innerHTML="계산 결과는 "+ i + "입니다."
+        }
+
+        main=function(){           
+            var formula=document.getElementById("input").value;
+            input.split(formula);
+            input.getFirstValue(fomula);
+
+            while(true){
+                input.getOperator(fomula)  
+                input.getSecondValue(fomula)
+                calc.calc(input.op,input.num2)
+                fomula.splice(1,2);
+                if(fomula[1]===undefined){
+                     break;
+                };
+            };
+            var result=input.num1;
+            output.print(result);
+        };
+    </script>
+    
+</body>
+</html>
