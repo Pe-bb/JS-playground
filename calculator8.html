@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        #output{
+            border: 2px solid gray;
+            background-color: bisque;
+            width: 200px;
+        }
+    </style>
+    <title>사칙연산 계산기</title>
+</head>
+<body>
+    <h1>사칙연산 계산기</h1>
+    <div class = "calculator">
+        <div id = "output">
+        </div>
+        <div id = "input">
+            <span class="number"> 
+                <button onclick="input.getNumber(7)" >7</button>
+                <button onclick="input.getNumber(8)" >8</button>
+                <button onclick="input.getNumber(9)" >9</button><br>
+                <button onclick="input.getNumber(4)" >4</button>
+                <button onclick="input.getNumber(5)" >5</button>
+                <button onclick="input.getNumber(6)" >6</button><br>
+                <button onclick="input.getNumber(1)" >1</button>
+                <button onclick="input.getNumber(2)" >2</button>
+                <button onclick="input.getNumber(3)" >3</button><br>
+                <button onclick="input.getNumber(0)" >0</button>
+            </span> 
+            <span class ="operator">            
+                <button value="+" onclick="input.getOperator(this.value)">+</button>
+                <button value="-" onclick="input.getOperator(this.value)">-</button>
+                <button value="*" onclick="input.getOperator(this.value)">*</button>
+                <button value="/" onclick="input.getOperator(this.value)">/</button>
+                <button onclick="calc.result()">=</button>
+                <button onclick="reset()">AC</button>
+            </span>
+        </div>
+    </div>
+
+    <script>
+        input={};
+        input.num1=[];
+        input.number=[];
+        input.opr=[];
+
+        input.getOperator=function(i){
+            this.opr.push(i)
+            console.log(i)
+            var out= document.getElementById("output")
+            out.innerHTML+=i
+        }
+
+        input.getNumber=function(i){
+            this.number.push(Number(i))
+            var out= document.getElementById("output")
+            out.innerHTML+=i
+        };
+        
+        
+        calc={};
+        calc.fomula=[];
+        calc.calc=function(opr,num2){
+            if(opr==="+"){
+                input.num1+=num2
+            }
+            else if(opr==="-"){
+                input.num1-=num2
+            }
+            else if(opr==="*"){
+                input.num1*=num2
+            }
+            else if(opr==="/"){
+                input.num1/=num2
+            }
+            else {alert("사칙연산자만 입력해 주세요")
+                input.num1="error"
+            };
+        };
+
+        calc.printFomula=function(opr,num2){
+            var out=document.getElementById("output")
+            calc.fomula+=opr+num2
+        }
+
+
+
+        output={};
+        output.print=function(i){
+            var out= document.getElementById("output")
+            out.innerHTML=calc.fomula+"="+i
+        } 
+        
+        calc.result=function(){
+            input.num1=input.number[0];
+            var out=document.getElementById("output")
+            calc.fomula=input.num1;
+            for(i=0;i<input.opr.length; i++){
+                calc.printFomula(input.opr[i],input.number[i+1])
+                calc.calc(input.opr[i],input.number[i+1]);
+            };
+            output.print(input.num1);
+        };
+
+        reset=function(){
+            input.number=[];
+            input.opr=[];
+            input.num1=[];
+            var out=document.getElementById("output")
+            out.innerHTML="<br>";
+        }
+        </script>
+</body>
+</html>
