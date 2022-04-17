@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>사칙연산 계산기</h1>
+    <div class = "calculator">
+        <div id = "output">
+        </div>
+        <div id = "input">
+            <span class="number"> 
+                <button onclick="clickNumber(event)">7</button>
+                <button onclick="clickNumber(event)">8</button>
+                <button onclick="clickNumber(event)">9</button>
+                <br>
+                <button onclick="clickNumber(event)">4</button>
+                <button onclick="clickNumber(event)">5</button>
+                <button onclick="clickNumber(event)">6</button>
+                <br>
+                <button onclick="clickNumber(event)">1</button>
+                <button onclick="clickNumber(event)">2</button>
+                <button onclick="clickNumber(event)">3</button>
+                <br>
+                <button onclick="clickNumber(event)">0</button>
+            </span> 
+            <span class ="operator">            
+                <button onclick="clickOther(event)">/</button>
+                <button onclick="clickOther(event)">*</button>
+                <button onclick="clickOther(event)">-</button>
+                <button onclick="clickOther(event)">+</button>
+                <button onclick="reset()">AC</button>
+                <button onclick="calc.divide()">=</button>
+            </span>
+        </div>
+    </div>
+    <script>
+        input={};
+        input.input=[];
+
+        //숫자를 입력받는 함수
+        clickNumber=function(){
+            input.input.push(event.target.innerHTML);
+        }
+        
+        //연산기호를 입력받는 함수
+        clickOther=function(){
+            input.input.push(event.target.innerHTML);
+        }
+        
+        calc={};
+        calc.oper=[];
+        calc.number=[];
+
+        //숫자와 연산자를 구분하는 함수
+        calc.divide=function(){
+            var fomula=input.input.join("");
+            var str = [];
+            for(i=0; i<fomula.length; i++){
+                str.push(fomula[i])
+            };
+
+            var count=[];
+            for(i=0; i < str.length; i++){
+                if(!isNaN(str[i])){
+                    count.push(i);
+                }
+                else{
+                    this.oper.push(str[i])
+                    for(j=0; j<count.length; j++){
+                        var num=count[j]
+                        var num2=[];
+                        num2.push(str[num]);
+                        console.log(num2);
+                    };
+                    this.number.push(num2.join(""));
+                    count=[];
+                };
+            };
+            for(j=0; j<count.length; j++){
+                var num=count[j] 
+                var num2=[];
+                num2.push(str[num]);
+                };
+            this.number.push(num2.join(""));
+        console.log(this.number,this.oper);
+        };
+        
+        
+        
+        //계산하는 함수
+
+        //값을 초기화하는 함수
+        reset=function(){
+            input.input=[];
+            var out= document.getElementById("output")
+            out.innerHTML="";
+        }
+
+
+    </script>
+</body>
+</html>
