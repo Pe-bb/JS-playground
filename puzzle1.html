@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>문자열 퍼즐</title>
+</head>
+<body>
+    <h1>문자열 퍼즐</h1>
+    <div id = "input">HELLO</div>
+    <div id = "ouput"></div>
+    <br>
+    <div id = "others">
+        <button onclick = "text.swapWord(event);">뒤집기</button>
+        <button onclick = "text.shifrWord(event);">밀어내기</button>
+    </div>
+    <div id="result">
+        일치합니다
+    </div>
+
+    <script>
+        const text = {};
+        text.str = [];
+        text.makeStr = function() {
+            const input = document.getElementById("input").innerHTML
+            for(i = 0; i < input.length; i++){
+                this.str.push(input[i]) 
+            };
+        };
+
+        text.makeBtn = function(str) {
+            const output = document.getElementById("output");
+            for(let i = 0; i < this.str.length; i++){
+                const button = document.createElement('button');
+                button.innerHTML = str[i];
+                ouput.appendChild(button);
+            };
+        };
+
+        text.swapWord = function(event) {
+            console.log("문자를 뒤집습니다.")
+        }
+
+        text.shiftWord = function() {
+            console.log("문자를 밀어냅니다.")
+        }
+
+        main = function() {
+            text.makeStr();
+            text.makeBtn(text.str);
+        };
+
+        main();
+    </script>
+</body>
+</html>
