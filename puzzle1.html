@@ -9,11 +9,12 @@
 <body>
     <h1>문자열 퍼즐</h1>
     <div id = "input">HELLO</div>
-    <div id = "ouput"></div>
+    <div id = "output"></div>
     <br>
     <div id = "others">
-        <button onclick = "text.swapWord(event);">뒤집기</button>
-        <button onclick = "text.shifrWord(event);">밀어내기</button>
+        <button onclick = "text.swapWord(event),text.makeBtn(text.str);">뒤집기</button>
+        <button onclick = "text.shiftToRightWord(event),text.makeBtn(text.str);">오른쪽으로 밀어내기</button>
+        <button onclick = "text.shiftToLeftWord(event),text.makeBtn(text.str);">왼쪽으로 밀어내기</button>
     </div>
     <div id="result">
         일치합니다
@@ -31,20 +32,45 @@
 
         text.makeBtn = function(str) {
             const output = document.getElementById("output");
+            output.innerHTML= "";
             for(let i = 0; i < this.str.length; i++){
                 const button = document.createElement('button');
                 button.innerHTML = str[i];
-                ouput.appendChild(button);
+                output.appendChild(button);
             };
         };
 
         text.swapWord = function(event) {
-            console.log("문자를 뒤집습니다.")
+            const swapStr = [];  
+            for(i= 0 ; i < document.getElementById("input").innerHTML.length ; i++){
+                swapStr.unshift(this.str.shift());
+            };
+            this.str=swapStr;
+            result.result(this.str.join(""),document.getElementById("input").innerHTML);
+            return;
+        };
+
+        text.shiftToRightWord = function() {
+            this.str.unshift(this.str.pop());
+            result.result(this.str.join(""),document.getElementById("input").innerHTML);
         }
 
-        text.shiftWord = function() {
-            console.log("문자를 밀어냅니다.")
+        text.shiftToLeftWord = function() {
+            this.str.push(this.str.shift());
+            result.result(this.str.join(""),document.getElementById("input").innerHTML);
         }
+        
+        result = {};
+        result.result=function(a,b){
+            const output = document.getElementById("result");
+            if(a===b){
+                output.innerHTML="일치합니다."
+            }
+            else{
+                output.innerHTML="일치하지 않습니다."
+            };
+        };
+        
 
         main = function() {
             text.makeStr();
